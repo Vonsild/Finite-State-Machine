@@ -2,7 +2,7 @@
 I'll be VERY surprised if any of this works in Internet Explorer - it's not designed to. Please don't open any IE related issues :)
 ## Usage
 ```JS
-new FSM( initial_state:string , states:object);
+new FSM( initial_state:string , states:object );
 ```
 States are defined as
 ```JS
