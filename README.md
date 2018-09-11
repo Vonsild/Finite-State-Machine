@@ -21,7 +21,7 @@ States are defined as
 ### Example
 
 ```JS
-var test = new FSM('idle', {
+var runner = new FSM('idle', {
 	'idle' : {
 		'run' : FSM.transition('running', function() {
 			console.log("I'll take a run"); 
@@ -38,6 +38,6 @@ var test = new FSM('idle', {
 	}
 })
 
-test.on('state-change', (e)=>console.log(e.detail));
-test.run();
+runner.on('state-change', (e)=>console.log(e.detail));
+runner.run();
 ```
