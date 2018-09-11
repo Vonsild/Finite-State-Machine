@@ -18,6 +18,10 @@ States are defined as
 }
 ```
 
+Transitions are atomic - that is, they either move the FSM to a new state (by returning a truthy value) or not (returning a falsey value, or triggering an error). A transition is synchronous. If you want to do asynchronous stuff before "finalising" the transition to the new state, for example fetching remote data, then display it, you should use a "fetching" or "waiting for data" state, from which you can transition once your data is ready;
+
+![Diagram](doc/diagram_1.png)
+
 ### Example
 
 ```JS
