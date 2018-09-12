@@ -1,4 +1,4 @@
-# Finite-State-Machine
+# Finite State Machine
 I'll be VERY surprised if any of this works in Internet Explorer - it's not designed to. Please don't open any IE related issues :)
 
 A "state" is a semi-stable state of the system, that doesn't change, unless something acts on it.
