@@ -22,6 +22,10 @@ Did I? Consider *blocked* a property, and not a state, and it will be a conditio
 
 Any given project likely has many FSMs. In the case of a webfront, you might have one for navigation, one or more for data retrieval, at least one for display state, and so on.
 
+Once you start thinking about state machines, you start seeing them everywhere.
+
+This library helps enforce correct usage of the pattern, by only making available those transitions, that are "legal" at any given time. In the user transitions above, it will, for example, be impossible to *log in* twice, without logging out first, and you can only *verify email* once.
+
 ## Definitions
 A "state" is a semi-stable state of the system, that doesn't change, unless something acts on it.
 
