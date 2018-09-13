@@ -1,6 +1,8 @@
 # Finite State Machine
 **DISCLAIMER**: I'll be VERY surprised if any of this works in Internet Explorer - it's not designed to. Please don't open any IE related issues :)
 
+## What is it?
+
 A *Finite State Machine* is any system, that can be in exactly one of any number of predefined states, at any one time. It will transition from one state to another, depending on input. It forms the basis of most, if not all, software systems.
 
 Think of a User class. A user may be in one of several states: *Newly created*, then transition to *Email verified*, after which the user can be *Logged in* and then *Logged out*. Let's list the states and transitions:
@@ -18,7 +20,7 @@ Logged in
 
 Did I? Consider *blocked* a property, and not a state, and it will be a condition for rejecting the the *Log in* transition above (in this implementation of FSM, you return false or throw an error), causing the machine to stay in the *Email verified / logged out* state.
 
-<hr>
+## Why?
 
 Any given project likely has many FSMs. In the case of a webfront, you might have one for navigation, one or more for data retrieval, at least one for display state, and so on.
 
