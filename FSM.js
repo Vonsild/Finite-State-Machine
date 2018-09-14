@@ -21,17 +21,27 @@ class FSM {
 
 		var me = this;
 		//Attach new transitions
-		Object.getOwnPropertyNames(this['states'][this['state']]).forEach((val) => Object.defineProperty(this, val, {
-			enumerable : true,
-			configurable : true,
-			writable : false,
-			value : me['states'][me['state']][val].bind(me)
-		}));
+		Object.getOwnPropertyNames(this['states'][this['state']]).forEach(function(val) {
+			let orig = me['states'][me['state']][val]
+			let func = orig.bind(me);
+			func.identity = orig.identity; 
+			Object.defineProperty(me, val, {
+				enumerable : true,
+				configurable : true,
+				writable : false,
+				value : func
+			})
+		});
 	}
 
 	//Factory function - wraps the `transition` function, makes sure it's called in the correct context
 	static transition(next_state, transition) {
-		return function(...args) {
+		var _tw = function _transition_wrapper(...args) {
+			//Make sure it's okay to call this functions
+			let found = false;
+			Object.keys(this).forEach((key) => found = (this[key].identity === _transition_wrapper.identity) ? true : found);
+			if (!found) throw new Error(`Transition called out of order`);
+
 			try {
 				var response = transition.apply(this, args);
 			} catch (error) {
@@ -54,6 +64,12 @@ class FSM {
 				return response;
 			}
 		}
+
+		//Give each transition it's own "identity" symbol. We'll use this to prevent transitions from being called out-of-order
+		_tw.identity = Symbol();
+		//Yes, this functionality should probably be implemented using a Proxy instead, but it seems to create more problems than it solves
+
+		return _tw;
 	}
 
 	//Add event functionality
