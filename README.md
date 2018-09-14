@@ -89,4 +89,4 @@ runner.run();
 ### Do-nots!
 
 1. Don't call the set_state method! This really should be private, but it's not currently possible (in a practical way) using ES6 classes.
-2. Don't 'capture' the transition method for later use. Always call the FSM instance directly, or you WILL end up with unspecified behaviour (again, it can be remedied, but if you just don't sabotage yourself, you should be good)
+2. ~~Don't 'capture' the transition method for later use. Always call the FSM instance directly, or you WILL end up with unspecified behaviour (again, it can be remedied, but if you just don't sabotage yourself, you should be good)~~ this has been fixed. You can no longer call transitions out of order by capturing the method.
