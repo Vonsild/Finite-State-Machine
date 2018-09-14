@@ -3,7 +3,7 @@
 
 ## What is it?
 
-A *Finite State Machine* is any system, that can be in exactly one of any number of predefined states, at any one time. It will transition from one state to another, depending on input. It forms the basis of most, if not all, software systems.
+A *Finite State Machine* is any system, that can be in exactly one of any number of predefined states, at any one time. It will transition from one state to another, depending on input. The concept forms the basis of most, if not all, software systems.
 
 Think of a User class. A user may be in one of several states: *Newly created*, then transition to *Email verified*, after which the user can be *Logged in* and then *Logged out*. Let's list the states and transitions:
 ```
