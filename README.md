@@ -59,26 +59,26 @@ Transitions are atomic - that is, they either move the FSM to a new state (by re
 
 ```JS
 var runner = new FSM('idle', {
-	'idle' : {
-		//Create the 'run' method, and - upon successful execution - transition to the 'running' state
-		'run' : FSM.transition('running', function() {
-			console.log("I'll take a run"); 
-			let fsm = this; 
-			//This is a lazy runner, he'll stop after a second
-			setTimeout(function(){fsm.stop('no', 'more')},1000); 
-			
-			//remember to return a non-falsey value, else the transition to 'running' won't happen
-			return "sprinting";
-		})
-	},
-	'running' : {
-		//Create the 'stop' method, and - upon successful execution - transition to the 'idle' state
-		'stop' : FSM.transition('idle', function(arg1, arg2) {
-			console.log("Don't wanna run", arg1, arg2); 
-			
-			return true;
-		})
-	}
+    'idle' : {
+        //Create the 'run' method, and - upon successful execution - transition to the 'running' state
+        'run' : FSM.transition('running', function() {
+            console.log("I'll take a run"); 
+            let fsm = this; 
+            //This is a lazy runner, he'll stop after a second
+            setTimeout(function(){fsm.stop('no', 'more')},1000); 
+            
+            //remember to return a non-falsey value, else the transition to 'running' won't happen
+            return "sprinting";
+        })
+    },
+    'running' : {
+        //Create the 'stop' method, and - upon successful execution - transition to the 'idle' state
+        'stop' : FSM.transition('idle', function(arg1, arg2) {
+            console.log("Don't wanna run", arg1, arg2); 
+            
+            return true;
+        })
+    }
 })
 
 runner.on('state-change', (e)=>console.log(e.detail));
