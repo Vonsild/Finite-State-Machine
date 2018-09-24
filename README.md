@@ -1,6 +1,8 @@
 # Finite State Machine
 **DISCLAIMER**: I'll be VERY surprised if any of this works in Internet Explorer - it's not designed to. Please don't open any IE related issues :)
 
+You may do whatever you want with this code - it's completely free, and I take no responsibility whatsoever.
+
 ## What is it?
 
 A *Finite State Machine* is any system, that can be in exactly one of any number of predefined states, at any one time. It will transition from one state to another, depending on input. The concept forms the basis of most, if not all, software systems.
